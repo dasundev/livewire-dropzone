@@ -154,7 +154,7 @@
                 },
                 removeUpload(tmpFilename) {
                     // Dispatch an event to remove the temporarily uploaded file
-                    _this.dispatch('{{ $name }}:fileRemoved', { tmpFilename })
+                    _this.dispatch('{{ $uuid }}:fileRemoved', { tmpFilename })
                 },
             });
         })
