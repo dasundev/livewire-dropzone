@@ -3,6 +3,7 @@
 namespace Dasundev\LivewireDropzone\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
@@ -22,9 +23,10 @@ class Dropzone extends Component
     #[Locked]
     public array $rules;
 
-    public $upload;
+    #[Locked]
+    public string $uuid;
 
-    public string $name;
+    public $upload;
 
     public string $error;
 
@@ -39,9 +41,9 @@ class Dropzone extends Component
         ];
     }
 
-    public function mount(string $name, array $rules = [], bool $multiple = false): void
+    public function mount(array $rules = [], bool $multiple = false): void
     {
-        $this->name = $name;
+        $this->uuid = Str::uuid();
         $this->multiple = $multiple;
         $this->rules = $rules;
     }
@@ -54,7 +56,7 @@ class Dropzone extends Component
             $this->validate();
         } catch (ValidationException $e) {
             // If the upload validation fails, we trigger the following event
-            $this->dispatch("{$this->name}:uploadError", $e->getMessage());
+            $this->dispatch("{$this->uuid}:uploadError", $e->getMessage());
 
             return;
         }
@@ -75,7 +77,7 @@ class Dropzone extends Component
      */
     public function handleUpload(TemporaryUploadedFile $file): void
     {
-        $this->dispatch("{$this->name}:fileAdded", [
+        $this->dispatch("{$this->uuid}:fileAdded", [
             'tmpFilename' => $file->getFilename(),
             'name' => $file->getClientOriginalName(),
             'extension' => $file->extension(),
@@ -88,7 +90,7 @@ class Dropzone extends Component
     /**
      * Handle the file added event.
      */
-    #[On('{name}:fileAdded')]
+    #[On('{uuid}:fileAdded')]
     public function onFileAdded(array $file): void
     {
         $this->files[] = $file;
@@ -97,7 +99,7 @@ class Dropzone extends Component
     /**
      * Handle the file removal event.
      */
-    #[On('{name}:fileRemoved')]
+    #[On('{uuid}:fileRemoved')]
     public function onFileRemoved(string $tmpFilename): void
     {
         $this->files = array_filter($this->files, function ($file) use ($tmpFilename) {
@@ -114,7 +116,7 @@ class Dropzone extends Component
     /**
      * Handle the upload error event.
      */
-    #[On('{name}:uploadError')]
+    #[On('{uuid}:uploadError')]
     public function onUploadError(string $error): void
     {
         $this->error = $error;
