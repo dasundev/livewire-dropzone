@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Navigate to the project directory
+
+echo 'Run PHP code style fixer'
+composer pint
+
+echo 'Run code analyse with larastan'
+composer analyse
+
+echo 'Create an optimized production build'
+npm run build

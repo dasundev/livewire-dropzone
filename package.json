@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "cd ./resources/js/livewire-dropzone-styles && npm run dev",
+    "build": "cd ./resources/js/livewire-dropzone-styles && npm run build"
+  }
+}
