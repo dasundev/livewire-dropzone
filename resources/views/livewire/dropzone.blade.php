@@ -34,14 +34,14 @@
         <div @click="$refs.input.click()" class="dz-border dz-border-dashed dz-rounded dz-border-gray-500 dz-w-full dz-cursor-pointer">
             <div>
                 <div x-show="!isDragging" class="dz-flex dz-items-center dz-bg-gray-50 dz-justify-center dz-gap-2 dz-py-8 dz-h-full dark:dz-bg-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-500 dark:text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="dz-w-6 dz-h-6 dz-text-gray-500 dark:dz-text-gray-400">
                         <path d="M9.25 13.25a.75.75 0 001.5 0V4.636l2.955 3.129a.75.75 0 001.09-1.03l-4.25-4.5a.75.75 0 00-1.09 0l-4.25 4.5a.75.75 0 101.09 1.03L9.25 4.636v8.614z" />
                         <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
                     </svg>
                     <p class="dz-text-md dz-text-gray-600 dark:dz-text-gray-400">Drop here or <span class="dz-font-semibold dz-text-black dark:dz-text-white">Browse files</span></p>
                 </div>
                 <div x-show="isDragging" class="dz-flex dz-items-center dz-bg-gray-100 dz-justify-center dz-gap-2 dz-py-8 dz-h-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 text-gray-500 dark:text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="dz-w-6 dz-h-6 dz-text-gray-500 dark:dz-text-gray-400">
                         <path d="M10 2a.75.75 0 01.75.75v5.59l1.95-2.1a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0L6.2 7.26a.75.75 0 111.1-1.02l1.95 2.1V2.75A.75.75 0 0110 2z" />
                         <path d="M5.273 4.5a1.25 1.25 0 00-1.205.918l-1.523 5.52c-.006.02-.01.041-.015.062H6a1 1 0 01.894.553l.448.894a1 1 0 00.894.553h3.438a1 1 0 00.86-.49l.606-1.02A1 1 0 0114 11h3.47a1.318 1.318 0 00-.015-.062l-1.523-5.52a1.25 1.25 0 00-1.205-.918h-.977a.75.75 0 010-1.5h.977a2.75 2.75 0 012.651 2.019l1.523 5.52c.066.239.099.485.099.732V15a2 2 0 01-2 2H3a2 2 0 01-2-2v-3.73c0-.246.033-.492.099-.73l1.523-5.521A2.75 2.75 0 015.273 3h.977a.75.75 0 010 1.5h-.977z" />
                     </svg>
