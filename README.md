@@ -27,7 +27,7 @@ npm i @dasundev/livewire-dropzone-styles
 
 Import styles to your project
 ```scss
-// resources/css/app.css
+/* resources/css/app.css */
 
 @import "@dasundev/livewire-dropzone-styles";
 ```
