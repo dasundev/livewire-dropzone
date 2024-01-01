@@ -10,7 +10,7 @@
 </p>
 
 ## ✨ Introduction
-This dropzone component for Livewire enables easy drag-and-drop file uploads. 
+This dropzone component for Livewire enables easy drag-and-drop file uploads.
 
 > To use this package, you must have [Livewire 3](https://livewire.laravel.com/) installed.
 
@@ -35,8 +35,8 @@ Import styles to your project
 ## 🎬 Showcase
 Now you can use the dropzone component as you like.
 ```html
-<livewire:dropzone 
-        wire:model="banners" 
+<livewire:dropzone
+        wire:model="banners"
         :rules="['image','mimes:png,jpeg','max:10420']"
         :multiple="true" />
 ```
@@ -52,3 +52,17 @@ The Livewire dropzone component uploads files to Livewire's [temporary upload di
 
 ## 📝 Blog Post
 I made a blog post about using the Livewire dropzone to store files permanently. It's perfect for people new to Laravel. You can read the blog post [here](https://www.dasun.dev/blog/how-to-use-livewire-dropzone).
+
+## 🔄 Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## 🤝 Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## ❤️ Support Me
+
+Is this plugin helpful to you? Your support will be helpful to maintain this plugin. Considering buying me a coffee.
+
+<a href='https://ko-fi.com/M4M41O7P3' target='_blank'><img height='40' style='border:0px;height:40px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
