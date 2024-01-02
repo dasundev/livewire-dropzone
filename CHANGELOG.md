@@ -2,6 +2,16 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.3 - 2024-01-02
+
+### What's Changed
+
+* chore: Update the commit message at update-changelog.yml by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/3
+* docs: Update README.md by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/4
+* ci: Update npm registry by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/5
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2023-12-30
 
 ### What's Changed
