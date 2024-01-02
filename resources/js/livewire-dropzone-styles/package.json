@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/dasundev/livewire-dropzone",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org"
   }
 }
