@@ -16,7 +16,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
         working-directory: ./resources/js/livewire-dropzone-styles
-      - run: npm publish
+      - run: npm publish --access public
         working-directory: ./resources/js/livewire-dropzone-styles
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
