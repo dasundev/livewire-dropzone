@@ -2,6 +2,18 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.4 - 2024-01-18
+
+### What's Changed
+
+* fix: Only allow a single file when the "multiple" variable is set to false by @AbsoluteMate in https://github.com/dasundev/livewire-dropzone/pull/13
+
+### New Contributors
+
+* @AbsoluteMate made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/13
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.3...v1.0.4
+
 ## v1.0.3 - 2024-01-02
 
 ### What's Changed
