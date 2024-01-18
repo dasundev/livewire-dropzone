@@ -93,7 +93,7 @@ class Dropzone extends Component
     #[On('{uuid}:fileAdded')]
     public function onFileAdded(array $file): void
     {
-        $this->files[] = $file;
+        $this->files = $this->multiple ? array_merge($this->files, [$file]) : [$file];
     }
 
     /**
