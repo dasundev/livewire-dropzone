@@ -18,7 +18,7 @@ class Dropzone extends Component
     use WithFileUploads;
 
     #[Modelable]
-    public array $files;
+    public ?array $files = [];
 
     #[Locked]
     public array $rules;
