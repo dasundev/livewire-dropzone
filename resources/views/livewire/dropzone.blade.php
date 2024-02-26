@@ -1,3 +1,5 @@
+@use('Illuminate\Support\Number')
+
 <div
     x-cloak
     x-data="dropzone({
