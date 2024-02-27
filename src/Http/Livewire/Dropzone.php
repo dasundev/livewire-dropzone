@@ -18,7 +18,7 @@ class Dropzone extends Component
     use WithFileUploads;
 
     #[Modelable]
-    public array $files;
+    public ?array $files;
 
     #[Locked]
     public array $rules;
@@ -46,6 +46,7 @@ class Dropzone extends Component
         $this->uuid = Str::uuid();
         $this->multiple = $multiple;
         $this->rules = $rules;
+        $this->files = [];
     }
 
     public function updatedUpload(): void
