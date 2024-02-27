@@ -2,6 +2,18 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.5 - 2024-02-27
+
+### What's Changed
+
+* fix: Assign an initial value to the $file property. by @macerd in https://github.com/dasundev/livewire-dropzone/pull/16
+
+### New Contributors
+
+* @macerd made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/16
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.4...v1.0.5
+
 ## v1.0.4 - 2024-01-18
 
 ### What's Changed
