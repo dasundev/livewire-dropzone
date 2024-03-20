@@ -1,6 +1,6 @@
 {
     "name": "dasundev/livewire-dropzone",
-    "description": "A dropzone component for Livewire enables easy drag-and-drop file uploads.",
+    "description": "A Livewire Dropzone component for simple drag-and-drop file uploads.",
     "keywords": [
         "livewire",
         "dropzone"
