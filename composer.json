@@ -1,5 +1,5 @@
 {
-    "name": "dasundev/livewire-dropzone",
+    "name": "moobay9/livewire-dropzone",
     "description": "A Livewire Dropzone component for simple drag-and-drop file uploads.",
     "keywords": [
         "livewire",
@@ -8,8 +8,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Dasun Tharanga",
-            "email": "hello@dasun.dev",
+            "name": "Masanori Oobayashi",
+            "email": "moobay9@gmail.com",
             "role": "Developer"
         }
     ],

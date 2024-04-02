@@ -95,6 +95,7 @@ class Dropzone extends Component
     public function onFileAdded(array $file): void
     {
         $this->files = $this->multiple ? array_merge($this->files, [$file]) : [$file];
+        $this->dispatch('filesCount', count: count($this->files));
     }
 
     /**
@@ -117,6 +118,7 @@ class Dropzone extends Component
 
             return $isNotTmpFilename;
         });
+        $this->dispatch('filesCount', count: count($this->files));
     }
 
     /**
