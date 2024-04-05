@@ -104,13 +104,11 @@ class Dropzone extends Component
     public function onFileRemoved(string $tmpFilename): void
     {
         $this->files = array_filter($this->files, function ($file) use ($tmpFilename) {
-            $isNotTmpFilename = $file['tmpFilename'] !== $tmpFilename;
-
-            if (! $isNotTmpFilename) {
-                unlink($file['path']);
-            }
-
-            return $isNotTmpFilename;
+            // Remove the temporary file from the array only.
+            // No need to remove from the Livewire's temporary upload directory manually.
+            // Because, files older than 24 hours cleanup automatically by Livewire.
+            // For more details, refer to: https://livewire.laravel.com/docs/uploads#configuring-automatic-file-cleanup
+            return $file['tmpFilename'] !== $tmpFilename;
         });
     }
 
