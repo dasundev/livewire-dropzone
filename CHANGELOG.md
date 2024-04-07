@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.6 - 2024-04-05
+
+### What's Changed
+
+* fix: Handle the file removal event without manually deleting temporary files by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/24
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.5...v1.0.6
+
 ## v1.0.5 - 2024-02-27
 
 ### What's Changed
