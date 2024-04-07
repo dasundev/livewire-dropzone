@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.7 - 2024-04-07
+
+### What's Changed
+
+* fix: Middle dot in dropzone UI by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/26
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.6...v1.0.7
+
 ## v1.0.6 - 2024-04-05
 
 ### What's Changed
