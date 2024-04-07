@@ -72,7 +72,7 @@
             @endif
 
             @if($hasMaxFileSize && $hasMimes)
-                <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
+                <span class="w-1 h-1 text-gray-400">·</span>
             @endif
 
             @if($hasMimes)
