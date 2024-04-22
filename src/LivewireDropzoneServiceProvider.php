@@ -21,7 +21,7 @@ class LivewireDropzoneServiceProvider extends PackageServiceProvider
         $this->registerLivewireComponent();
     }
 
-    public function registerLivewireComponent(): void
+    private function registerLivewireComponent(): void
     {
         Livewire::component('dropzone', Dropzone::class);
     }
