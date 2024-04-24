@@ -54,5 +54,7 @@
                 "LivewireDropzone": "Dasundev\\LivewireDropzone\\LivewireDropzoneFacade"
             }
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
