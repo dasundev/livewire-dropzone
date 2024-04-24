@@ -68,7 +68,7 @@
             @endphp
 
             @if($hasMaxFileSize)
-                <p>{{ __('Up to :size', ['size' => Number::fileSize($this->maxFileSize * 1024)]) }}</p>
+                <p>{{ __('Up to :size', ['size' => \Illuminate\Support\Number::fileSize($this->maxFileSize * 1024)]) }}</p>
             @endif
 
             @if($hasMaxFileSize && $hasMimes)
@@ -99,7 +99,7 @@
                             @endif
                             <div class="dz-flex dz-flex-col dz-items-start dz-gap-1">
                                 <div class="dz-text-center dz-text-slate-900 dz-text-sm dz-font-medium dark:dz-text-slate-100">{{ $file['name'] }}</div>
-                                <div class="dz-text-center dz-text-gray-500 dz-text-sm dz-font-medium">{{ Number::fileSize($file['size']) }}</div>
+                                <div class="dz-text-center dz-text-gray-500 dz-text-sm dz-font-medium">{{ \Illuminate\Support\Number::fileSize($file['size']) }}</div>
                             </div>
                         </div>
                         <div class="dz-flex dz-items-center dz-mr-3">
