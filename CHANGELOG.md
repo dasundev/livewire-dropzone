@@ -2,6 +2,18 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.8 - 2024-04-24
+
+### What's Changed
+
+* fix: Use number facade with namespace by @tominal in https://github.com/dasundev/livewire-dropzone/pull/30
+
+### New Contributors
+
+* @tominal made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/30
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.7...v1.0.8
+
 ## v1.0.7 - 2024-04-07
 
 ### What's Changed
