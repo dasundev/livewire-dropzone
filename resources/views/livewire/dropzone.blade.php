@@ -2,7 +2,8 @@
     x-cloak
     x-data="dropzone({
         _this: @this,
-        multiple: @js($multiple)
+        uuid: @js($uuid)
+        multiple: @js($multiple),
     })"
     @dragenter.prevent.document="onDragenter($event)"
     @dragleave.prevent="onDragleave($event)"
@@ -117,7 +118,7 @@
 
     @script
     <script>
-        Alpine.data('dropzone', ({ _this, multiple }) => {
+        Alpine.data('dropzone', ({ _this, multiple, uuid }) => {
             return ({
                 isDragging: false,
                 isDropped: false,
@@ -154,7 +155,7 @@
                 },
                 removeUpload(tmpFilename) {
                     // Dispatch an event to remove the temporarily uploaded file
-                    _this.dispatch('{{ $uuid }}:fileRemoved', { tmpFilename })
+                    _this.dispatch(uuid + ':fileRemoved', { tmpFilename })
                 },
             });
         })
