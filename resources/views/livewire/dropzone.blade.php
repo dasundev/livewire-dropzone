@@ -2,8 +2,8 @@
     x-cloak
     x-data="dropzone({
         _this: @this,
+        uuid: @js($uuid)
         multiple: @js($multiple),
-        uuid: '{{ $uuid }}'
     })"
     @dragenter.prevent.document="onDragenter($event)"
     @dragleave.prevent="onDragleave($event)"
