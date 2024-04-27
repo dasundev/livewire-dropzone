@@ -2,6 +2,18 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.9 - 2024-04-27
+
+### What's Changed
+
+fix: Ensure correct UUID is dispatched when using multiple dropzone components on the same page by @Fsmash in https://github.com/dasundev/livewire-dropzone/pull/32
+
+### New Contributors
+
+* @Fsmash made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/32
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.8...v1.0.9
+
 ## v1.0.8 - 2024-04-24
 
 ### What's Changed
