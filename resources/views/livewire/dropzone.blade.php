@@ -2,7 +2,7 @@
     x-cloak
     x-data="dropzone({
         _this: @this,
-        uuid: @js($uuid)
+        uuid: @js($uuid),
         multiple: @js($multiple),
     })"
     @dragenter.prevent.document="onDragenter($event)"
@@ -118,7 +118,7 @@
 
     @script
     <script>
-        Alpine.data('dropzone', ({ _this, multiple, uuid }) => {
+        Alpine.data('dropzone', ({ _this, uuid, multiple }) => {
             return ({
                 isDragging: false,
                 isDropped: false,
