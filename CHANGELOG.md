@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.0.10 - 2024-04-30
+
+### What's Changed
+
+* fix: missing comma and order of params passed into Apline. by @Fsmash in https://github.com/dasundev/livewire-dropzone/pull/34
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.9...v1.0.10
+
 ## v1.0.9 - 2024-04-27
 
 ### What's Changed
