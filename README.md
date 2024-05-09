@@ -11,7 +11,7 @@ This dropzone component for Livewire enables easy drag-and-drop file uploads.
 
 ## Documentation
 
-You can find the documentation [here](https://dasun.dev/docs/livewire-dropzone/), which provides detailed information on installing and using the package.
+You can find the documentation [here](https://dasun.dev/docs/livewire-dropzone), which provides detailed information on installing and using the package.
 
 ## Changelog
 
