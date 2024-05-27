@@ -31,13 +31,26 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Dasundev\\LivewireDropzone\\Tests\\": "tests"
+            "Dasundev\\LivewireDropzone\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest",
-        "pint": "vendor/bin/pint --dirty",
-        "analyse": "vendor/bin/phpstan analyse"
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "test": "./vendor/bin/pest",
+        "lint": "./vendor/bin/pint --dirty",
+        "analyse": "./vendor/bin/phpstan analyse",
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ]
     },
     "config": {
         "sort-packages": true,
