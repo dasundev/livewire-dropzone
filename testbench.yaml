@@ -1,0 +1,11 @@
+providers:
+  - Livewire\LivewireServiceProvider
+  - Dasundev\LivewireDropzone\LivewireDropzoneServiceProvider
+
+workbench:
+  install: true
+  discovers:
+    web: true
+  sync:
+    - from: ./resources/js/livewire-dropzone-styles/dist/
+      to: public/vendor/livewire-dropzone
