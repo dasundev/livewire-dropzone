@@ -4,7 +4,7 @@
 # Navigate to the project directory
 
 echo 'Run PHP code style fixer'
-composer pint
+composer lint
 
 echo 'Run code analyse with larastan'
 composer analyse
