@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v1.2.0 - 2024-05-27
+
+### What's Changed
+
+* test: Setup testbench by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/36
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.0.10...v1.2.0
+
 ## v1.0.10 - 2024-04-30
 
 ### What's Changed
