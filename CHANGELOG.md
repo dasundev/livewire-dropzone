@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v2.0.0 - 2024-07-04
+
+### What's Changed
+
+* fix: remove dropzone label by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/40
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v1.2.0...v2.0.0
+
 ## v1.2.0 - 2024-05-27
 
 ### What's Changed
