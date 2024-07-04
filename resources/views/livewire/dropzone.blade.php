@@ -11,7 +11,7 @@
     @drop.prevent="onDrop"
     class="dz-w-full dz-antialiased"
 >
-    <div class="dz-flex dz-flex-col dz-items-start dz-h-full dz-w-full dz-max-w-2xl dz-justify-center dz-bg-white dark:dz-bg-gray-800 dark:dz-border-gray-600 dark:hover:dz-border-gray-500 dz-p-10">
+    <div class="dz-flex dz-flex-col dz-items-start dz-h-full dz-w-full dz-max-w-2xl dz-justify-center dz-bg-white dark:dz-bg-gray-800 dark:dz-border-gray-600 dark:hover:dz-border-gray-500">
         @if(! is_null($error))
             <div class="dz-bg-red-50 dz-p-4 dz-w-full dz-mb-4 dz-rounded dark:dz-bg-red-600">
                 <div class="dz-flex dz-gap-3 dz-items-start">
@@ -23,7 +23,6 @@
             </div>
         @endif
         <div class="dz-flex dz-justify-between dz-w-full">
-            <label for="upload" class="dz-font-medium dz-text-lg dz-mb-2 dz-text-black dark:dz-text-white">{{ __('Upload files') }} <span class="dz-text-red-500">*</span></label>
             <div x-show="isLoading" role="status">
                 <svg aria-hidden="true" class="dz-w-5 dz-h-5 dz-text-gray-200 dz-animate-spin dark:dz-text-gray-700 dz-fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
