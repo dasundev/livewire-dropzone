@@ -9,12 +9,12 @@
 
 This dropzone component for Livewire enables easy drag-and-drop file uploads.
 
-> [!NOTE]
-> Interested in Livewire Dropzone Themes? Please fill out [this](https://forms.gle/bact2NhZkDUXu9Hk6) form to let us know your preferences for paid and free themes and provide any feedback you may have.
-
 ## Documentation
 
 You can find the documentation [here](https://dasun.dev/docs/livewire-dropzone), which provides detailed information on installing and using the package.
+
+## Themes
+Interested in Livewire Dropzone Themes? Please fill out [this](https://forms.gle/bact2NhZkDUXu9Hk6) form to let us know your preferences for paid and free themes and provide any feedback you may have.
 
 ## Changelog
 
