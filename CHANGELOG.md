@@ -2,6 +2,21 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v2.0.1 - 2024-07-20
+
+### What's Changed
+
+* fix: ensure `$files` variable is set before usage in Blade template by @hipoagencia in https://github.com/dasundev/livewire-dropzone/pull/44
+* fix: ui bug by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/45
+* chore(deps-dev): bump braces from 3.0.2 to 3.0.3 in /resources/js/livewire-dropzone-styles by @dependabot in https://github.com/dasundev/livewire-dropzone/pull/46
+
+### New Contributors
+
+* @hipoagencia made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/44
+* @dependabot made their first contribution in https://github.com/dasundev/livewire-dropzone/pull/46
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2024-07-04
 
 ### What's Changed
