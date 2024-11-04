@@ -22,7 +22,13 @@
                 </div>
             </div>
         @endif
-        <div @click="$refs.input.click()" class="dz-border dz-border-dashed dz-rounded dz-border-gray-500 dz-w-full dz-cursor-pointer">
+        <div
+                x-on:livewire-upload-start="isLoading = true"
+                x-on:livewire-upload-progress="progress = $event.detail.progress"
+                x-on:livewire-upload-finish="isLoading = false; progress = 0;"
+                x-on:livewire-upload-cancel="isLoading = false; progress = 0;"
+                x-on:livewire-upload-error="console.log('livewire-dropzone upload error'), isLoading = false"
+                @click="$refs.input.click()" class="dz-border dz-border-dashed dz-rounded dz-border-gray-500 dz-w-full dz-cursor-pointer">
             <div>
                 <div x-show="!isDragging" class="dz-flex dz-items-center dz-bg-gray-50 dz-justify-center dz-gap-2 dz-py-8 dz-h-full dark:dz-bg-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="dz-w-6 dz-h-6 dz-text-gray-500 dark:dz-text-gray-400">
@@ -44,12 +50,15 @@
                     wire:model="upload"
                     type="file"
                     class="dz-hidden"
-                    x-on:livewire-upload-start="isLoading = true"
-                    x-on:livewire-upload-finish="isLoading = false"
-                    x-on:livewire-upload-error="console.log('livewire-dropzone upload error', error)"
                     @if(! is_null($this->accept)) accept="{{ $this->accept }}" @endif
                     @if($multiple === true) multiple @endif
             >
+            <!-- Progress Bar -->
+            <div
+                    x-show="isLoading"
+                    class="dz-bg-green-600 dark:dz-bg-green-400 dz-h-1.5"
+                    :style="{ width: progress+'%', transition: 'width 1s'}"
+            ></div>
         </div>
 
         <div class="dz-flex dz-justify-between dz-w-full dz-mt-2">
@@ -121,6 +130,7 @@
                 isDragging: false,
                 isDropped: false,
                 isLoading: false,
+                progress: 0,
 
                 onDrop(e) {
                     this.isDropped = true
@@ -129,14 +139,21 @@
                     const file = multiple ? e.dataTransfer.files : e.dataTransfer.files[0]
 
                     const args = ['upload', file, () => {
-                        // Upload completed
+                        // Success callback - Upload completed
                         this.isLoading = false
-                    }, (error) => {
-                        // An error occurred while uploading
-                        console.log('livewire-dropzone upload error', error);
+                        console.log('✔️ File uploaded successfully!');
                     }, () => {
-                        // Uploading is in progress
+                        // Error callback - An error occurred while uploading
+                        console.log('❌ File upload failed!');
+                    }, (event) => {
+                        // Progress callback - Uploading is in progress
                         this.isLoading = true
+                        this.progress = event.detail.progress
+                        console.log('⏳ File is uploading...');
+                    }, () => {
+                        // Cancelled callback
+                        this.isLoading = false
+                        console.log('❌ File upload cancelled!');
                     }];
 
                     // Upload file(s)
