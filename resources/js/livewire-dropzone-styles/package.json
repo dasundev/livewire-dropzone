@@ -1,6 +1,6 @@
 {
   "name": "@dasundev/livewire-dropzone-styles",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "style": "dist/styles.css",
   "repository": {
     "type": "git",
