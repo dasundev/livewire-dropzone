@@ -6,7 +6,7 @@
         multiple: @js($multiple),
     })"
     @dragenter.prevent.document="onDragenter($event)"
-    @dragleave.prevent="onDragleave($event)"
+    @dragleave.prevent.away="onDragleave($event)"
     @dragover.prevent="onDragover($event)"
     @drop.prevent="onDrop"
     class="dz-w-full dz-antialiased"
