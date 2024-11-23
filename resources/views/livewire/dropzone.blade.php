@@ -54,7 +54,7 @@
         </div>
 
         <div class="dz-flex dz-justify-between dz-w-full dz-mt-2">
-            <div class="dz-flex dz-items-center dz-gap-2 dz-text-gray-500 dz-text-sm">
+            <div class="dz-flex dz-gap-3 dz-text-gray-500 dz-text-sm">
                 @php
                     $hasMaxFileSize = ! is_null($this->maxFileSize);
                     $hasMimes = ! empty($this->mimes);
