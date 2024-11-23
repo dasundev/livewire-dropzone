@@ -6,6 +6,3 @@ composer lint
 
 echo 'Run code analyse with larastan'
 composer analyse
-
-echo 'Create an optimized production build'
-npm run build
