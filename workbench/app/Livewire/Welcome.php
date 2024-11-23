@@ -10,6 +10,8 @@ class Welcome extends Component
 {
     public $welcome;
 
+    public $files;
+
     #[Layout('workbench::layouts.app')]
     public function render(): View
     {

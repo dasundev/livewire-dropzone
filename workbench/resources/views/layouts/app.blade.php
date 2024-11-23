@@ -11,7 +11,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="max-w-2xl mx-auto min-h-screen flex justify-center items-center">
+<body class="max-w-2xl mx-auto min-h-screen flex justify-center items-center bg-white dark:bg-gray-800">
     {{ $slot }}
 </body>
 </html>
