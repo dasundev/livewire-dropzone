@@ -13,6 +13,7 @@ class LivewireDropzoneServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('livewire-dropzone')
+            ->hasConfigFile()
             ->hasViews();
     }
 

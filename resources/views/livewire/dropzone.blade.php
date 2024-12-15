@@ -3,11 +3,9 @@
     x-data="dropzone({
         _this: @this,
         uuid: @js($uuid),
-        multiple: @js($multiple),
     })"
-    @dragenter.prevent.document="onDragenter($event)"
-    @dragleave.prevent="onDragleave($event)"
-    @dragover.prevent="onDragover($event)"
+    @dragleave.prevent="isDragging = false"
+    @dragover.prevent="isDragging = true"
     @drop.prevent="onDrop"
     class="block antialiased"
 >
@@ -41,13 +39,13 @@
             </div>
             <input
                     x-ref="input"
-                    wire:model="upload"
                     type="file"
                     class="hidden"
                     x-on:livewire-upload-start="isLoading = true"
                     x-on:livewire-upload-cancel="isLoading = false"
                     x-on:livewire-upload-finish="isLoading = false"
                     x-on:livewire-upload-error="console.log('livewire-dropzone upload error')"
+                    x-on:change.prevent="onChange"
                     @if(! is_null($this->accept)) accept="{{ $this->accept }}" @endif
                     @if($multiple === true) multiple @endif
             >
@@ -118,49 +116,89 @@
 
     @script
     <script>
-        Alpine.data('dropzone', ({ _this, uuid, multiple }) => {
+        Alpine.data('dropzone', ({ _this, uuid }) => {
             return ({
+                chunks: [],
+                totalChunks: 0,
+                uploadedChunks: [],
                 isDragging: false,
-                isDropped: false,
                 isLoading: false,
+                
+                onChange(e) {
+                    const files = [...e.target.files];
 
+                    files.forEach((file, index) => this.createChunks(index, file));
+
+                    this.uploadChunks()
+                },
                 onDrop(e) {
-                    this.isDropped = true
                     this.isDragging = false
 
-                    const file = multiple ? e.dataTransfer.files : e.dataTransfer.files[0]
+                    const files = [...e.dataTransfer.files]
+                    
+                    files.forEach((file, index) => this.createChunks(index, file));
 
-                    const args = ['upload', file, () => {
-                        // Upload completed
-                        this.isLoading = false
-                    }, (error) => {
-                        // An error occurred while uploading
-                        console.log('livewire-dropzone upload error', error);
-                    }, () => {
-                        // Uploading is in progress
-                        this.isLoading = true
-                    }];
-
-                    // Upload file(s)
-                    multiple ? _this.uploadMultiple(...args) : _this.upload(...args)
-                },
-                onDragenter() {
-                    this.isDragging = true
-                },
-                onDragleave() {
-                    this.isDragging = false
-                },
-                onDragover() {
-                    this.isDragging = true
+                    this.uploadChunks()
                 },
                 cancelUpload() {
-                    _this.cancelUpload('upload')
+                    _this.cancelUpload('chunk')
 
                     this.isLoading = false
                 },
                 removeUpload(tmpFilename) {
                     // Dispatch an event to remove the temporarily uploaded file
                     _this.dispatch(uuid + ':fileRemoved', { tmpFilename })
+                },
+                createChunks(index, file) {
+                    let start = 0;
+                    const chunkSize = @js($chunkSize);
+                    this.chunks[index] = [];
+                    
+                    // Split file into chunks and add a name property to each blob
+                    while (start < file.size) {
+                        const end = Math.min(start + chunkSize, file.size);
+                        const chunk = file.slice(start, end);
+                        const chunkNo = Math.ceil(start / chunkSize) + 1;
+                        chunk.name = `${file.name}.${chunkNo}.part`;
+                        this.chunks[index].push(chunk);
+                        start = end;
+                    }
+                },
+                async uploadChunks() {
+                    this.isLoading = true
+                    
+                    for(const [index, file] of Object.entries(this.chunks)) {
+                        this.uploadedChunks[index] = 0;
+
+                        for (const chunk of file) {
+                            const onUploadComplete = () => {
+                                this.uploadedChunks[index]++;
+
+                                // If all chunks are uploaded, merge them
+                                if (this.uploadedChunks[index] === this.chunks[index].length) {
+                                    this.isLoading = false;
+                                    this.chunks[index] = [];
+                                    
+                                    _this.call('mergeChunks');
+                                }
+                            };
+
+                            const onUploadError = (error) => {
+                                this.isLoading = false;
+                                this.chunks[index] = [];
+                                
+                                console.error('livewire-dropzone upload error', error);
+                            };
+
+                            const onUploading = () => {
+                                this.isLoading = true;
+                            };
+
+                            const args = ['chunk', chunk, onUploadComplete, onUploadError, onUploading];
+
+                            _this.upload(...args);
+                        }
+                    }
                 },
             });
         })

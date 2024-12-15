@@ -3,6 +3,9 @@
 namespace Dasundev\LivewireDropzone\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Computed;
@@ -10,6 +13,7 @@ use Livewire\Attributes\Locked;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\FileUploadConfiguration;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
@@ -26,18 +30,20 @@ class Dropzone extends Component
     #[Locked]
     public string $uuid;
 
-    public $upload;
-
     public string $error;
 
     public bool $multiple;
 
+    public $chunk;
+
+    public $chunks = [];
+
+    public $file;
+
     public function rules(): array
     {
-        $field = $this->multiple ? 'upload.*' : 'upload';
-
         return [
-            $field => [...$this->rules],
+            'file' => [...$this->rules],
         ];
     }
 
@@ -49,9 +55,31 @@ class Dropzone extends Component
         $this->files = [];
     }
 
-    public function updatedUpload(): void
+    /**
+     * Called after updating the chunk property.
+     */
+    public function updatedChunk($value): void
     {
-        $this->reset('error');
+        $this->chunks[] = $value;
+    }
+
+    /**
+     * Merge uploaded file chunks into a single file.
+     *
+     * @throws \Livewire\Features\SupportFileUploads\FileNotPreviewableException
+     */
+    public function mergeChunks(): void
+    {
+        $disk = FileUploadConfiguration::disk();
+        $path = null;
+
+        foreach ($this->chunks as $chunk) {
+            $path = Storage::disk($disk)->putFileAs('/'.FileUploadConfiguration::path(), $chunk, TemporaryUploadedFile::generateHashNameWithOriginalNameEmbedded(UploadedFile::fake()->create(preg_replace('/\.\d+\.part/', '', $chunk->getClientOriginalName()))));
+        }
+
+        $path = File::basename($path);
+
+        $this->file = TemporaryUploadedFile::createFromLivewire($path);
 
         try {
             $this->validate();
@@ -62,21 +90,17 @@ class Dropzone extends Component
             return;
         }
 
-        $this->upload = $this->multiple
-            ? $this->upload
-            : [$this->upload];
+        $this->dispatchTempFileAddedEvent($this->file);
 
-        foreach ($this->upload as $upload) {
-            $this->handleUpload($upload);
-        }
-
-        $this->reset('upload');
+        $this->reset('chunks', 'error');
     }
 
     /**
-     * Handle the uploaded file and dispatch an event with file details.
+     * Dispatch an event with the details of the uploaded temporary file.
+     *
+     * @throws \Livewire\Features\SupportFileUploads\FileNotPreviewableException
      */
-    public function handleUpload(TemporaryUploadedFile $file): void
+    public function dispatchTempFileAddedEvent(TemporaryUploadedFile $file): void
     {
         $this->dispatch("{$this->uuid}:fileAdded", [
             'tmpFilename' => $file->getFilename(),
@@ -161,6 +185,7 @@ class Dropzone extends Component
     /**
      * Checks if the provided MIME type corresponds to an image.
      */
+    #[Computed]
     public function isImageMime($mime): bool
     {
         return in_array($mime, ['png', 'gif', 'bmp', 'svg', 'jpeg', 'jpg']);
@@ -168,6 +193,8 @@ class Dropzone extends Component
 
     public function render(): View
     {
-        return view('livewire-dropzone::livewire.dropzone');
+        return view('livewire-dropzone::livewire.dropzone', [
+            'chunkSize' => config('livewire-dropzone.chunk_size'),
+        ]);
     }
 }
