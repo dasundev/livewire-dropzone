@@ -123,14 +123,17 @@
                 isDragging: false,
                 isDropped: false,
                 isLoading: false,
+                chunks: [],
+                totalChunks: 0,
+                uploadedChunks: 0,
 
                 onDrop(e) {
                     this.isDropped = true
                     this.isDragging = false
 
-                    const file = multiple ? e.dataTransfer.files : e.dataTransfer.files[0]
-
-                    const args = ['file', file, () => {
+                    const files = [...e.dataTransfer.files]
+                    
+                    const args = ['file', files, () => {
                         // Upload completed
                         this.isLoading = false
                     }, (error) => {
@@ -142,7 +145,9 @@
                     }];
 
                     // Upload file(s)
-                    multiple ? _this.uploadMultiple(...args) : _this.upload(...args)
+                    files.forEach(file => this.createChunks(file));
+                    
+                    this.uploadChunks()
                 },
                 onDragenter() {
                     this.isDragging = true
@@ -158,6 +163,46 @@
 
                     this.isLoading = false
                 },
+                
+                createChunks(file) {
+                    const size = 1000; // 5MB chunks
+                    const chunks = Math.ceil(file.size / size);
+
+                    for (let i = 0; i < chunks; i++) {
+                        this.chunks.push({
+                            chunk: file.slice(i * size, Math.min(i * size + size, file.size)),
+                            filename: file.name + '.part' + i,
+                            size: Math.min(size, file.size - i * size),
+                            totalChunks: chunks,
+                            file: file
+                        });
+                    }
+
+                    this.totalChunks += chunks;
+                },
+                
+                async uploadChunks() {
+                    for (const chunk of this.chunks) {
+                        await this.uploadChunk(chunk);
+                    }
+
+                    if (this.uploadedChunks === this.totalChunks) {
+                        _this.call('mergeChunks', this.chunks[0].file.name);
+                    }
+                },
+                
+                async uploadChunk(chunk) {
+                    const formData = new FormData();
+                    formData.append('file', chunk.chunk, chunk.filename);
+
+                    await fetch('/upload-chunk', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    this.uploadedChunks++;
+                },
+                
                 removeUpload(tmpFilename) {
                     // Dispatch an event to remove the temporarily uploaded file
                     _this.dispatch(uuid + ':fileRemoved', { tmpFilename })

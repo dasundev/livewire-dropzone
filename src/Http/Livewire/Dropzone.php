@@ -3,6 +3,7 @@
 namespace Dasundev\LivewireDropzone\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Computed;
@@ -32,6 +33,10 @@ class Dropzone extends Component
 
     public bool $multiple;
 
+    public $chunks = [];
+
+    public $uploaded = 0;
+
     public function rules(): array
     {
         $field = $this->multiple ? 'file.*' : 'file';
@@ -51,7 +56,7 @@ class Dropzone extends Component
 
     public function updatedFile(): void
     {
-        $this->reset('error');
+        $this->reset('error', 'chunks', 'uploaded');
 
         try {
             $this->validate();
@@ -62,15 +67,51 @@ class Dropzone extends Component
             return;
         }
 
-        $this->file = $this->multiple
-            ? $this->file
-            : [$this->file];
-
-        foreach ($this->file as $file) {
-            $this->handleUpload($file);
-        }
+        $this->createChunks($this->file);
 
         $this->reset('file');
+    }
+
+    public function createChunks($file)
+    {
+        $size = 1024 * 1024 * 5; // 5MB chunks
+        $chunks = ceil($file->getSize() / $size);
+
+        for ($i = 0; $i < $chunks; $i++) {
+            $this->chunks[] = [
+                'chunk' => $file->getRealPath(),
+                'offset' => $i * $size,
+                'length' => min($size, $file->getSize() - $i * $size),
+            ];
+        }
+    }
+
+    public function storeChunk($data, $key): void
+    {
+        $path = 'app/livewire-tmp/'.$this->file->getClientOriginalName().'.part'.$key;
+        Storage::put($path, $data);
+        $this->uploaded += strlen($data);
+
+        if ($key == count($this->chunks) - 1) {
+            $this->mergeChunks();
+        }
+    }
+
+    public function uploadChunks(): void
+    {
+        foreach ($this->chunks as $key => $chunk) {
+            $stream = fopen($chunk['chunk'], 'r+');
+            fseek($stream, $chunk['offset']);
+            $data = fread($stream, $chunk['length']);
+            fclose($stream);
+
+            $this->storeChunk($data, $key);
+        }
+    }
+
+    public function mergeChunks(): void
+    {
+        dd('Merge chunks');
     }
 
     /**
