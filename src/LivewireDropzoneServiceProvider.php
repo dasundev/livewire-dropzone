@@ -13,7 +13,8 @@ class LivewireDropzoneServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('livewire-dropzone')
-            ->hasViews();
+            ->hasViews()
+            ->hasRoute('web');
     }
 
     public function bootingPackage(): void

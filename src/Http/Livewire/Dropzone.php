@@ -26,7 +26,7 @@ class Dropzone extends Component
     #[Locked]
     public string $uuid;
 
-    public $upload;
+    public $file;
 
     public string $error;
 
@@ -34,7 +34,7 @@ class Dropzone extends Component
 
     public function rules(): array
     {
-        $field = $this->multiple ? 'upload.*' : 'upload';
+        $field = $this->multiple ? 'file.*' : 'file';
 
         return [
             $field => [...$this->rules],
@@ -49,7 +49,7 @@ class Dropzone extends Component
         $this->files = [];
     }
 
-    public function updatedUpload(): void
+    public function updatedFile(): void
     {
         $this->reset('error');
 
@@ -62,15 +62,15 @@ class Dropzone extends Component
             return;
         }
 
-        $this->upload = $this->multiple
-            ? $this->upload
-            : [$this->upload];
+        $this->file = $this->multiple
+            ? $this->file
+            : [$this->file];
 
-        foreach ($this->upload as $upload) {
-            $this->handleUpload($upload);
+        foreach ($this->file as $file) {
+            $this->handleUpload($file);
         }
 
-        $this->reset('upload');
+        $this->reset('file');
     }
 
     /**

@@ -24,6 +24,6 @@ it('can upload file', function () {
     $uuid = $dropzone->get('uuid');
 
     $dropzone
-        ->set('upload', UploadedFile::fake()->image('foo.png'))
+        ->set('file', UploadedFile::fake()->image('foo.png'))
         ->assertDispatched("$uuid:fileAdded");
 });

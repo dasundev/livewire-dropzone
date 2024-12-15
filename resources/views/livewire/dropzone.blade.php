@@ -41,7 +41,7 @@
             </div>
             <input
                     x-ref="input"
-                    wire:model="upload"
+                    wire:model="file"
                     type="file"
                     class="hidden"
                     x-on:livewire-upload-start="isLoading = true"
@@ -130,7 +130,7 @@
 
                     const file = multiple ? e.dataTransfer.files : e.dataTransfer.files[0]
 
-                    const args = ['upload', file, () => {
+                    const args = ['file', file, () => {
                         // Upload completed
                         this.isLoading = false
                     }, (error) => {
@@ -154,7 +154,7 @@
                     this.isDragging = true
                 },
                 cancelUpload() {
-                    _this.cancelUpload('upload')
+                    _this.cancelUpload('file')
 
                     this.isLoading = false
                 },
