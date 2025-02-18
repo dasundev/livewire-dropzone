@@ -7,7 +7,7 @@
     
     <title>Livewire Dropzone</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/livewire-dropzone/styles.css') }}">
 </head>
 <body class="max-w-2xl mx-auto min-h-screen flex justify-center items-center bg-white dark:bg-gray-800">
     {{ $slot }}
