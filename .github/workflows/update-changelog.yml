@@ -27,5 +27,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
-          commit_message: 'docs: Update CHANGELOG.md'
+          commit_message: 'docs: update CHANGELOG.md'
           file_pattern: CHANGELOG.md
