@@ -41,12 +41,12 @@ class Dropzone extends Component
         ];
     }
 
-    public function mount(array $rules = [], bool $multiple = false): void
+    public function mount(array $rules = [], bool $multiple = false, array $files = []): void
     {
         $this->uuid = Str::uuid();
         $this->multiple = $multiple;
         $this->rules = $rules;
-        $this->files = [];
+        $this->files = $files;
     }
 
     public function updatedUpload(): void
