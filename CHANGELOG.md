@@ -2,16 +2,6 @@
 
 This file records every version of `livewire-dropzone`.
 
-## v2.0.3 - 2025-02-18
-
-### What's Changed
-
-* feat: add support for canceling upload by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/56
-* fix: user interface bugs by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/58
-* feat: add support for editing by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/66
-
-**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.2...v2.0.3
-
 ## v2.0.2 - 2024-11-23
 
 ### What's Changed
