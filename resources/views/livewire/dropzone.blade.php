@@ -99,8 +99,8 @@
                             </div>
                         @endif
                         <div class="dz-flex dz-flex-col dz-items-start dz-gap-1">
-                            <div class="dz-text-center dz-text-slate-900 dz-text-xs dz-md:text-sm dz-font-medium dz-dark:text-slate-100">{{ $file['name'] }}</div>
-                            <div class="dz-text-center dz-text-gray-500 dz-text-xs dz-md:text-sm dz-font-medium">{{ \Illuminate\Support\Number::fileSize($file['size']) }}</div>
+                            <div class="dz-text-start dz-line-clamp-1 dz-text-slate-900 dz-text-xs dz-md:text-sm dz-font-medium dz-dark:text-slate-100">{{ $file['name'] }}</div>
+                            <div class="dz-text-start dz-text-gray-500 dz-text-xs dz-md:text-sm dz-font-medium">{{ \Illuminate\Support\Number::fileSize($file['size']) }}</div>
                         </div>
                     </div>
                     <div class="dz-flex dz-items-center dz-mr-3">
