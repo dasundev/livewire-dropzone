@@ -2,6 +2,15 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v2.0.4 - 2025-02-22
+
+### What's Changed
+
+* chore(deps): bump league/commonmark from 2.5.3 to 2.6.0 by @dependabot in https://github.com/dasundev/livewire-dropzone/pull/59
+* fix: display long file names without breaking the user interface by @dasundev in https://github.com/dasundev/livewire-dropzone/pull/69
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.3...v2.0.4
+
 ## v2.0.3 - 2025-02-18
 
 ### What's Changed
