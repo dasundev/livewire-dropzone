@@ -2,6 +2,14 @@
 
 This file records every version of `livewire-dropzone`.
 
+## 2.0.5 - 2025-05-22
+
+### What's Changed
+
+* chore(deps): bump laravel/framework from 10.48.24 to 10.48.29 by @dependabot in https://github.com/dasundev/livewire-dropzone/pull/70
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.4...2.0.5
+
 ## v2.0.4 - 2025-02-22
 
 ### What's Changed
