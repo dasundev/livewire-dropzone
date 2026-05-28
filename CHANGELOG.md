@@ -2,6 +2,17 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v2.0.12 - 2026-05-28
+
+### What's Changed
+
+* chore(deps): bump symfony/routing from 6.4.22 to 6.4.41 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/87
+* chore(deps-dev): bump symfony/yaml from 6.4.13 to 6.4.41 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/90
+* chore(deps): bump symfony/mime from 6.4.30 to 6.4.41 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/89
+* chore(deps): bump symfony/mailer from 6.4.23 to 6.4.40 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/88
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.11...v2.0.12
+
 ## v2.0.11 - 2026-04-12
 
 ### What's Changed
