@@ -2,6 +2,15 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v3.0.0 - 2026-07-05
+
+### What's Changed
+
+* Fix dev dependency versions
+* chore(deps-dev): bump postcss from 8.4.32 to 8.5.15 in /resources/js/livewire-dropzone-styles by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/91
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v2.0.12...v3.0.0
+
 ## v2.0.12 - 2026-05-28
 
 ### What's Changed
