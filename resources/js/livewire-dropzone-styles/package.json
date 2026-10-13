@@ -11,7 +11,7 @@
     "dropzone"
   ],
   "devDependencies": {
-    "tailwindcss": "^3.3.6"
+    "tailwindcss": "^4.3.3"
   },
   "scripts": {
     "dev": "npx tailwindcss -i ./src/styles.scss -o ./dist/styles.css --watch",
