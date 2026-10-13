@@ -2,6 +2,15 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v3.0.2 - 2026-10-13
+
+### What's Changed
+
+* chore(deps-dev): bump brace-expansion from 2.0.2 to 2.1.4 in /resources/js/livewire-dropzone-styles by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/94
+* chore(deps-dev): bump brace-expansion from 2.1.4 to 2.1.7 in /resources/js/livewire-dropzone-styles by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/95
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v3.0.1...v3.0.2
+
 ## v3.0.1 - 2026-08-02
 
 ### What's Changed
