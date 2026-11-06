@@ -2,6 +2,20 @@
 
 This file records every version of `livewire-dropzone`.
 
+## v3.0.3 - 2026-11-06
+
+### What's Changed
+
+* chore(deps): bump postcss-selector-parser and tailwindcss in /resources/js/livewire-dropzone-styles by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/97
+* chore(deps-dev): bump symfony/yaml from 8.1.1 to 8.1.10 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/99
+* chore(deps): bump symfony/http-foundation from 8.1.1 to 8.1.10 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/98
+* chore(deps): bump laravel/framework from 13.18.1 to 13.40.0 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/103
+* chore(deps): bump livewire/livewire from 4.3.3 to 4.4.8 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/102
+* chore(deps): bump league/commonmark from 2.8.2 to 2.10.7 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/100
+* chore(deps): bump league/flysystem from 3.35.1 to 3.36.0 by @dependabot[bot] in https://github.com/dasundev/livewire-dropzone/pull/101
+
+**Full Changelog**: https://github.com/dasundev/livewire-dropzone/compare/v3.0.2...v3.0.3
+
 ## v3.0.2 - 2026-10-13
 
 ### What's Changed
